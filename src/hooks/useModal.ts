@@ -1,6 +1,6 @@
-import { modalState } from '@/atoms';
-import { useCallback, useId, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { modalState } from "@/store";
+import { useCallback, useId, useState } from "react";
+import { useRecoilState } from "recoil";
 
 const isArrEmpty = (arr: unknown[]) => arr.length === 0;
 
@@ -16,7 +16,7 @@ const useModal = () => {
     setIsOpen(true);
     setModal((pre) => [...pre, { id: id }]);
     // modal을 전역상태에 추가한다
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     // modal이 open되면 배경의 스크롤을 막아야함
   }, [id, setModal]);
 
@@ -25,7 +25,7 @@ const useModal = () => {
     setModal((pre) => pre.filter((c) => c.id !== id));
     // modal을 전역상태에서 제거한다.
 
-    if (isArrEmpty(modal)) document.body.style.overflow = 'unset';
+    if (isArrEmpty(modal)) document.body.style.overflow = "unset";
     // modal이 모두 꺼지면 배경의 스크롤이 가능해야함
   }, [id, modal, setModal]);
 

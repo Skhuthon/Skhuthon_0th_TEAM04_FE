@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 
 import NotFound from "@/components/common/404";
-import Layout from "@/components/common/Layout";
+import { DefaultLayout, AuthLayout } from "@/components/common/Layout";
+import useAuth from "./hooks/useAuth";
+import { useEffect } from "react";
 
 interface RouteCommon {
   loader?: LoaderFunction;
@@ -28,6 +30,8 @@ interface Pages {
 
 const pages: Pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
 const routes: IRoute[] = [];
+const authRoutes: IRoute[] = [];
+const defaultRoutes: IRoute[] = [];
 for (const path of Object.keys(pages)) {
   const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
   if (!fileName) {
@@ -47,11 +51,25 @@ for (const path of Object.keys(pages)) {
   });
 }
 
+routes.map((route) => {
+  const isAuth = route.path.startsWith("/auth");
+  isAuth ? authRoutes.push(route) : defaultRoutes.push(route);
+});
+
 const routeObjects: RouteObject[] = [
   {
     path: "/",
-    element: <Layout />,
-    children: routes.map(({ Element, ErrorBoundary, ...rest }) => ({
+    element: <DefaultLayout />,
+    children: defaultRoutes.map(({ Element, ErrorBoundary, ...rest }) => ({
+      ...rest,
+      element: <Element />,
+      ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
+    })),
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: authRoutes.map(({ Element, ErrorBoundary, ...rest }) => ({
       ...rest,
       element: <Element />,
       ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
@@ -65,6 +83,15 @@ const routeObjects: RouteObject[] = [
 
 const router = createBrowserRouter(routeObjects);
 const App = () => {
+  const { currentUserId } = useAuth();
+  const location = window.location;
+  useEffect(() => {
+    // console.log("로그인상태변경", currentUser.id || "유저없음");
+    if (!currentUserId && !location.pathname.startsWith("/auth")) {
+      location.replace("/auth/login");
+    }
+  }, [currentUserId, location]);
+
   return <RouterProvider router={router} />;
 };
 

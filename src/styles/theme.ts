@@ -1,28 +1,31 @@
-const windowSize = {
-  small: 'screen and (max-width: "600px")',
-  base: 'screen and (max-width: "768px")',
-  large: 'screen and (max-width: "1024px")',
+export const lightTheme = {
+  color: {
+    text: "#000000",
+    background: "#F8F9FD",
+    main: "#309C9F",
+    sub: "#AFC2C8 ",
+    point: "#E3CBC7",
+  },
+  fontSize: {
+    large: "25px",
+    medium: "22px",
+    small: "20px",
+    xSmall: "18px",
+  },
 };
+export const darkTheme = {
+  color: {
+    text: "#000000",
+    background: "#F8F9FD",
+    main: "#309C9F",
+    sub: "#AFC2C8 ",
+    point: "#E3CBC7",
+  },
 
-const fontSize = {
-  xs: "0.5rem",
-  sm: "0.75rem",
-  base: "1rem",
-  md: "1.25rem",
-  lg: "1.5rem",
+  fontSize: {
+    large: "25px",
+    medium: "22px",
+    small: "20px",
+    xSmall: "18px",
+  },
 };
-
-const lightversion = {
-  background: "#fff",
-  fontPrimary: "black",
-  fontSecondary: "gray",
-  primary: "#00a0ff",
-  secondary: "#ddd",
-  hover: "#00a0ff50",
-};
-
-const theme = {
-  fontSize,
-};
-
-export default theme;

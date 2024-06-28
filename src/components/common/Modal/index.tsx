@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import ModalPortal from './ModalPortal';
-import { useRecoilValue } from 'recoil';
-import { modalState } from '@/atoms';
-import CloseIcon from '@/assets/svg/icon-close.svg?react';
-import { ComponentPropsWithoutRef } from 'react';
+import styled from "styled-components";
+import ModalPortal from "./ModalPortal";
+import { useRecoilValue } from "recoil";
+import { modalState } from "@/store";
+import CloseIcon from "@/assets/svg/icon-close.svg?react";
+import { ComponentPropsWithoutRef } from "react";
 
-export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
+export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   /** Modal이 열렸는지 판단하는 변수 */
   isOpen: boolean;
   /** Modal을 닫을 때 실행할 함수 */
@@ -22,7 +22,7 @@ const Modal = ({ isOpen, onClose, children, ...attributes }: ModalProps) => {
 
   const onClickBackDrop = (e: React.MouseEvent<HTMLDivElement>) => {
     const { target } = e;
-    if ((target as HTMLElement).id !== 'modal-backdrop') {
+    if ((target as HTMLElement).id !== "modal-backdrop") {
       return;
     }
     onClose();
@@ -34,10 +34,10 @@ const Modal = ({ isOpen, onClose, children, ...attributes }: ModalProps) => {
         <ModalPortal>
           <BackDrop
             {...attributes}
-            id='modal-backdrop'
+            id="modal-backdrop"
             onClick={onClickBackDrop}
             backdropColor={
-              modal.length > 1 ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.3)'
+              modal.length > 1 ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.3)"
             }
           >
             <Wrapper>
