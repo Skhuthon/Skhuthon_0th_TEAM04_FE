@@ -5,6 +5,8 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme.ts";
 import App from "./App";
+import ModalContainer from "./components/common/Modal/ModalContainer.tsx";
+import ToastContainer from "./components/common/Toast/ToastContainer.tsx";
 
 // recoil root, them provider
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -12,6 +14,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RecoilRoot>
       <ThemeProvider theme={theme}>
         <App />
+        <ModalContainer />
+        <ToastContainer />
       </ThemeProvider>
     </RecoilRoot>
   </React.StrictMode>

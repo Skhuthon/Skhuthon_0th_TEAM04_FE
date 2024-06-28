@@ -1,9 +1,13 @@
 import {
   createBrowserRouter,
   RouterProvider,
+  RouteObject,
   LoaderFunction,
   ActionFunction,
 } from "react-router-dom";
+
+import NotFound from "@/components/common/404";
+import Layout from "@/components/common/Layout";
 
 interface RouteCommon {
   loader?: LoaderFunction;
@@ -43,14 +47,23 @@ for (const path of Object.keys(pages)) {
   });
 }
 
-const router = createBrowserRouter(
-  routes.map(({ Element, ErrorBoundary, ...rest }) => ({
-    ...rest,
-    element: <Element />,
-    ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
-  }))
-);
+const routeObjects: RouteObject[] = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: routes.map(({ Element, ErrorBoundary, ...rest }) => ({
+      ...rest,
+      element: <Element />,
+      ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
+    })),
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+];
 
+const router = createBrowserRouter(routeObjects);
 const App = () => {
   return <RouterProvider router={router} />;
 };
