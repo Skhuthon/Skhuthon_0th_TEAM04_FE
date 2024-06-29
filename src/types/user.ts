@@ -1,8 +1,10 @@
 /** 유저 */
 export interface User {
-  memberId: number;
-  password: string;
-  memberName: string;
+  senderId: number;
+  senderName: string;
+  tokenResponseDto: {
+    accessToken: string;
+  };
 }
 
 /**
@@ -10,7 +12,15 @@ export interface User {
  */
 export interface SignupRequest {
   password: string;
-  memberName: string;
+  senderName: string;
+}
+
+/**
+ * 회원가입 한 후 response
+ */
+export interface SingupResponse {
+  senderId: number;
+  senderName: string;
 }
 
 /**
@@ -18,6 +28,17 @@ export interface SignupRequest {
  */
 
 export interface LoginRequest {
-  memberName: string;
+  senderName: string;
   password: string;
+}
+
+/**
+ * 로그인 한 후 response
+ */
+export interface LoginResponse {
+  senderId: number;
+  senderName: string;
+  tokenResponseDto: {
+    accessToken: string;
+  };
 }

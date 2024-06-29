@@ -1,3 +1,4 @@
+import { storageConstants } from "@/utils/constants";
 import axios, {
   AxiosError,
   AxiosRequestConfig,
@@ -10,6 +11,7 @@ const { VITE_BASE_URL } = import.meta.env;
 console.log("baseurl", VITE_BASE_URL);
 export const instance = axios.create({
   baseURL: `${VITE_BASE_URL}`,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   } as AxiosRequestHeaders,
@@ -17,12 +19,28 @@ export const instance = axios.create({
 
 // Request interceptor
 const interceptorRequestFulfilled = (config: AxiosRequestConfig) => {
-  return {
-    ...config,
-    headers: {
-      "Content-Type": "application/json",
-    } as AxiosRequestHeaders,
-  };
+  const TOKEN =
+    typeof window !== "undefined"
+      ? localStorage.getItem(storageConstants.accessToken)
+      : "";
+
+  if (TOKEN) {
+    return {
+      ...config,
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${TOKEN}`,
+        // Cookie: `token=${TOKEN}`,
+      } as AxiosRequestHeaders,
+    };
+  } else {
+    return {
+      ...config,
+      headers: {
+        "Content-Type": "application/json",
+      } as AxiosRequestHeaders,
+    };
+  }
 };
 
 instance.interceptors.request.use(interceptorRequestFulfilled);

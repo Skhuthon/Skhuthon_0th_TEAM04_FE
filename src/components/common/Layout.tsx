@@ -1,43 +1,71 @@
 import { breakpoints } from "@/styles/media";
 import React, { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import Header from "@/components/common/Header";
 
 export const DefaultLayout: React.FC = () => {
+  const navigate = useNavigate();
   return (
-    <div>
+    <LayoutWrapper>
       <Suspense fallback={"loading..."}>
-        <LayoutWrapper>
-          <Outlet />
-        </LayoutWrapper>
+        <LayoutContainer>
+          <Header
+            onClickLogo={() => {
+              navigate("/");
+            }}
+            onClickMyPage={() => {
+              navigate("/mypage");
+            }}
+          />
+          <Layout>
+            <Outlet />
+          </Layout>
+        </LayoutContainer>
       </Suspense>
-    </div>
+    </LayoutWrapper>
   );
 };
 
 export const AuthLayout: React.FC = () => {
   return (
-    <div>
+    <LayoutWrapper>
       <Suspense fallback={"loading..."}>
-        <LayoutWrapper>
+        <LayoutContainer>
           <Outlet />
-        </LayoutWrapper>
+        </LayoutContainer>
       </Suspense>
-    </div>
+    </LayoutWrapper>
   );
 };
 
 const LayoutWrapper = styled.div`
   display: flex;
+  width: 100vw;
+  min-height: 100dvh;
+  justify-content: center;
+  align-items: center;
+`;
+const LayoutContainer = styled.div`
+  display: flex;
   flex-direction: column;
   width: 60vw;
   min-height: 100dvh;
+  height: 100dvh;
 
-  ${breakpoints.medium} {
+  ${breakpoints.small} {
     width: 100vw;
   }
 
-  ${breakpoints.large} {
+  ${breakpoints.medium} {
     width: 80vw;
   }
+
+  ${breakpoints.large} {
+    width: 60vw;
+  }
+`;
+
+const Layout = styled.div`
+  min-height: calc(100dvh - 60px);
 `;

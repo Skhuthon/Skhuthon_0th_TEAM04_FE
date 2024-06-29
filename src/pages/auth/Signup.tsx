@@ -1,7 +1,7 @@
 import Input from "@/components/common/Input/Input";
 import Toast from "@/components/common/Toast";
 import { useSignUp } from "@/hooks/api/auth/usePostSignUp";
-import { ChangeEvent, useState, useRef } from "react";
+import { ChangeEvent, useState } from "react";
 import PasswrodIcon from "@/assets/svg/icon-auth-password.svg";
 import PasswordShowIcon from "@/assets/svg/icon-auth-passwordShow.svg";
 import NameIcon from "@/assets/svg/icon-auth-name.svg";
@@ -17,7 +17,7 @@ const Signup = () => {
   const handleClickButton = () => {
     mutate({
       password: password.value,
-      memberName: name,
+      senderName: name,
     });
   };
 
@@ -49,14 +49,6 @@ const Signup = () => {
       errorMessage: errorMessage,
     }));
   };
-
-  const boxVariants = {
-    hover: { scale: 1.5, rotateZ: "90deg" },
-    tab: { borderRadius: "100px", scale: 1 },
-    drag: { backgroundColor: "rgb(46,123,250)", transition: { duration: 2 } },
-  };
-
-  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
@@ -113,17 +105,17 @@ const Signup = () => {
         >
           회원가입
         </StyledButton>
-        <div
+        <P
           onClick={() => {
             navigate("/auth/login");
           }}
         >
           이미 계정이 있으신가요?
-        </div>
-        <Toast isOpen={toastMessage.isOpen} onClose={toastClose}>
-          {toastMessage.message}
-        </Toast>
+        </P>
       </SignupDiv>
+      <Toast isOpen={toastMessage.isOpen} onClose={toastClose}>
+        {toastMessage.message}
+      </Toast>
     </>
   );
 };
@@ -135,9 +127,9 @@ export const SignupDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 200px;
-  margin: 100px;
+  width: 100%;
+  height: 100dvh;
+  gap: 10px;
 `;
 
 const StyledInput = styled(Input)`
@@ -151,4 +143,7 @@ const StyledButton = styled(Button)`
 const StyledH1 = styled.div`
   padding: 50px;
   font-size: 60pt;
+`;
+const P = styled.p`
+  cursor: pointer;
 `;

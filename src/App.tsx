@@ -83,14 +83,16 @@ const routeObjects: RouteObject[] = [
 
 const router = createBrowserRouter(routeObjects);
 const App = () => {
-  const { currentUserId } = useAuth();
+  const { currentUser } = useAuth();
   const location = window.location;
   useEffect(() => {
-    // console.log("로그인상태변경", currentUser.id || "유저없음");
-    if (!currentUserId && !location.pathname.startsWith("/auth")) {
+    if (
+      (!currentUser || !currentUser.senderId) &&
+      !location.pathname.startsWith("/auth")
+    ) {
       location.replace("/auth/login");
     }
-  }, [currentUserId, location]);
+  }, [currentUser, location]);
 
   return <RouterProvider router={router} />;
 };

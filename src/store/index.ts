@@ -13,12 +13,13 @@ export const modalState = atom<{ id: string }[]>({
 export const UserState = atom<User>({
   key: "UserState",
   default: undefined,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const UserIdState = selector<number>({
   key: "UserIdState",
   get: ({ get }) => {
     const user = get(UserState);
-    return user?.memberId || 0;
+    return user?.senderId || 0;
   },
 });

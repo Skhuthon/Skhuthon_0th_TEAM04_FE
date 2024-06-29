@@ -1,23 +1,23 @@
 import Input from "@/components/common/Input/Input";
 import Toast from "@/components/common/Toast";
 import { useLogin } from "@/hooks/api/auth/usePostLogin";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import NameIcon from "@/assets/svg/icon-auth-name.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PasswrodIcon from "@/assets/svg/icon-auth-password.svg";
 import PasswordShowIcon from "@/assets/svg/icon-auth-passwordShow.svg";
 import Button from "@/components/common/Button";
 import styled from "styled-components";
-// import "styles/styles.css";
 
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { mutate, toastClose, toastMessage } = useLogin();
 
   const handleClickButton = () => {
     mutate({
-      password: "1234",
-      memberName: "지영",
+      password: password.value,
+      senderName: name,
     });
   };
 
@@ -27,11 +27,6 @@ const Login = () => {
     value: string;
     type: "password" | "text";
   }>({ value: "", type: "password" });
-  const [passwordCheck, setPasswordCheck] = useState<{
-    value: string;
-    type: "password" | "text";
-    errorMessage?: string;
-  }>({ value: "", type: "password", errorMessage: undefined });
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -40,15 +35,11 @@ const Login = () => {
     setPassword((prev) => ({ ...prev, value: e.target.value }));
   };
 
-  const onChangePasswordCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    const errorMessage =
-      password.value !== e.target.value ? "비밀번호를 확인해주세요" : undefined;
-    setPasswordCheck((prev) => ({
-      ...prev,
-      value: e.target.value,
-      errorMessage: errorMessage,
-    }));
-  };
+  useEffect(() => {
+    if (location && location?.state?.name) {
+      setName(location.state.name);
+    }
+  }, [location]);
 
   return (
     <>
@@ -86,13 +77,13 @@ const Login = () => {
         >
           로그인
         </StyledButton>
-        <div
+        <P
           onClick={() => {
             navigate("/auth/signup");
           }}
         >
           새로운 계정을 만들어보세요!
-        </div>
+        </P>
         <Toast isOpen={toastMessage.isOpen} onClose={toastClose}>
           {toastMessage.message}
         </Toast>
@@ -108,9 +99,9 @@ export const LoginDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 200px;
-  margin: 100px;
+  width: 100%;
+  height: 100dvh;
+  gap: 10px;
 `;
 
 const StyledInput = styled(Input)`
@@ -125,4 +116,8 @@ const StyledButton = styled(Button)`
 const StyledH1 = styled.div`
   padding: 50px;
   font-size: 60pt;
+`;
+
+const P = styled.p`
+  cursor: pointer;
 `;
