@@ -80,7 +80,6 @@ export const Password = ({ ...args }) => {
         value={password.value}
         placeholder="password"
         onChangeValue={onChangeValue}
-        onClick={() => alert(`검색어 ${password}`)}
         leftIcon={PasswrodIcon}
         rightIcon={{
           icon: PasswordShowIcon,
@@ -93,11 +92,10 @@ export const Password = ({ ...args }) => {
       />
       <Input
         {...args}
-        type={password.value}
+        type={password.type}
         value={passwordCheck.value}
         placeholder="passwordCheck"
         onChangeValue={onChangePasswordCheck}
-        onClick={() => alert(`검색어 ${passwordCheck}`)}
         errorMessage={passwordCheck.errorMessage}
         leftIcon={PasswrodIcon}
         rightIcon={{
