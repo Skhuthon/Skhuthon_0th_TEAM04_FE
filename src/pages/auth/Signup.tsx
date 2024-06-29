@@ -60,6 +60,7 @@ const Signup = () => {
           onChangeValue={onChangeName}
           leftIcon={NameIcon}
         />
+        <br />
         <StyledInput
           type={password.type}
           value={password.value}
@@ -75,6 +76,7 @@ const Signup = () => {
               })),
           }}
         />
+        <br />
         <StyledInput
           type={passwordCheck.type}
           value={passwordCheck.value}
@@ -91,7 +93,7 @@ const Signup = () => {
               })),
           }}
         />
-
+        <br />
         <StyledButton
           buttonColor="main"
           buttonStyle="gradient"
@@ -141,7 +143,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledH1 = styled.div`
-  padding: 50px;
+  padding: 100px;
   font-size: 60pt;
 `;
 const P = styled.p`
