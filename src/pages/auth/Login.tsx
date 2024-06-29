@@ -51,6 +51,7 @@ const Login = () => {
           onChangeValue={onChangeName}
           leftIcon={NameIcon}
         />
+        <br />
         <StyledInput
           type={password.type}
           value={password.value}
@@ -66,6 +67,7 @@ const Login = () => {
               })),
           }}
         />
+        <br />
         <StyledButton
           buttonColor="main"
           buttonStyle="gradient"
@@ -114,7 +116,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledH1 = styled.div`
-  padding: 50px;
+  padding: 100px;
   font-size: 60pt;
 `;
 

@@ -4,6 +4,7 @@ import { Dates, YearMonthDate } from "@/types/common";
 import * as S from "./Calendar.styled";
 import PrevIcon from "@/assets/svg/icon-arrow-left.svg?react";
 import NextIcon from "@/assets/svg/icon-arrow-right.svg?react";
+import HeartIcon from "@/assets/svg/Heart.svg";
 
 export interface Props {
   dates: Dates[];

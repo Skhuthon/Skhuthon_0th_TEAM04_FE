@@ -85,14 +85,14 @@ const router = createBrowserRouter(routeObjects);
 const App = () => {
   const { currentUser } = useAuth();
   const location = window.location;
-  useEffect(() => {
-    if (
-      (!currentUser || !currentUser.senderId) &&
-      !location.pathname.startsWith("/auth")
-    ) {
-      location.replace("/auth/login");
-    }
-  }, [currentUser, location]);
+  // useEffect(() => {
+  //   if (
+  //     (!currentUser || !currentUser.senderId) &&
+  //     !location.pathname.startsWith("/auth")
+  //   ) {
+  //     location.replace("/auth/login");
+  //   }
+  // }, [currentUser, location]);
 
   return <RouterProvider router={router} />;
 };
