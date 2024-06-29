@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from "react";
 import * as S from "./SearchInput.styled";
+
 import SearchIcon from "@/assets/svg/icon-search.svg";
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -17,7 +18,7 @@ const SearchInput = ({
 }: Props) => {
   return (
     <S.SearchWrapper>
-      <S.InputArea
+      <S.SearchInputArea
         {...rest}
         value={value}
         onChange={(e) => onChangeValue(e)}
@@ -27,6 +28,7 @@ const SearchInput = ({
             onClick();
           }
         }}
+        inputWidth="80%"
       />
       <img src={SearchIcon} alt="search-icon" onClick={onClick} />
     </S.SearchWrapper>

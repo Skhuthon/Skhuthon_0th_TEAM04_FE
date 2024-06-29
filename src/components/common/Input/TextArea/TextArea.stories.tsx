@@ -1,10 +1,10 @@
 import type { Meta } from "@storybook/react";
-import SearchInput from ".";
+import Input from ".";
 import { ChangeEvent, useState } from "react";
 
 const meta = {
-  title: "입력/검색창",
-  component: SearchInput,
+  title: "입력/textarea",
+  component: Input,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
@@ -12,24 +12,26 @@ const meta = {
       handles: ["mouseover", "click .btn"],
     },
   },
-} satisfies Meta<typeof SearchInput>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 
 export const Default = ({ ...args }) => {
   const [value, setValue] = useState("");
 
-  const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    if (newValue.length > 500) return;
     setValue(e.target.value);
   };
   return (
     <div style={{ width: "300px", height: "500px" }}>
-      <SearchInput
+      <Input
         {...args}
         value={value}
-        placeholder="다이어리 제목 검색"
+        placeholder="내용을 입력해주세요"
+        label="내용"
         onChangeValue={onChangeValue}
-        onClick={() => alert(`검색어 ${value}`)}
       />
     </div>
   );

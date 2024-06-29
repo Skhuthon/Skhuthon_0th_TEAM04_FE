@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { InputArea } from "../Input/Input.styled";
 
 export const SearchWrapper = styled.div`
   display: flex;
@@ -10,9 +11,4 @@ export const SearchWrapper = styled.div`
   padding: 12px 20px;
 `;
 
-export const InputArea = styled.input`
-  width: 80%;
-  border: none;
-  outline: none;
-  font-size: ${({ theme }) => theme.fontSize.large};
-`;
+export const SearchInputArea = styled(InputArea)``;
