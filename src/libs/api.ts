@@ -11,12 +11,8 @@ console.log("baseurl", VITE_BASE_URL);
 export const instance = axios.create({
   baseURL: `${VITE_BASE_URL}`,
   headers: {
-    // "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
-    // "Access-Control-Allow-Methods": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-    // "Access-Control-Allow-Credentials": true,
   } as AxiosRequestHeaders,
-  withCredentials: true,
 });
 
 // Request interceptor

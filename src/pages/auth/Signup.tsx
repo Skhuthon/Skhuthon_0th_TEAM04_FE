@@ -6,9 +6,8 @@ const Signup = () => {
 
   const handleClickButton = () => {
     mutate({
-      getmemberName: "지영",
       password: "1234",
-      name: "지영",
+      memberName: "지영",
     });
   };
 

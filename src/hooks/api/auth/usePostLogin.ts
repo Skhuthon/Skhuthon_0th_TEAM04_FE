@@ -1,23 +1,23 @@
 import { useToast } from "@/hooks/useToast";
 import { post } from "@/libs/api";
 
-import { SignupRequest } from "@/types/user";
+import { LoginRequest } from "@/types/user";
 import { useMutation } from "@tanstack/react-query";
 
-const postSignUp = async (params: SignupRequest) => {
+const postLogin = async (params: LoginRequest) => {
   const res = await post(`/apis/v1/members`, params);
 
   return { res }; // 성공적인 경우 데이터 반환
 };
 
-export const useSignUp = () => {
+export const useLogin = () => {
   const { toastOpen, toastClose, toastMessage } = useToast();
   const { mutate } = useMutation({
-    mutationFn: (params: SignupRequest) => postSignUp(params),
+    mutationFn: (params: LoginRequest) => postLogin(params),
 
     onSuccess: ({ res }) => {
       console.log("res", res);
-      toastOpen("생성되었습니다");
+      toastOpen("환영합니다");
     },
     onError: () => {
       toastOpen("오류가 발생했습니다");
