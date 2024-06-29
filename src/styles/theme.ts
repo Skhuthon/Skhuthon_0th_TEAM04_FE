@@ -16,6 +16,9 @@ export const lightTheme = {
     headerShadow: "5px 7px 30px #CECECE",
     bookShadow: "3px 4px 10px #a4a4a4",
   },
+  boxBorder: {
+    bookBorder: "3px solid #E6E6E6",
+  },
 };
 
 export const darkTheme = {
@@ -36,5 +39,8 @@ export const darkTheme = {
   boxShadow: {
     headerShadow: "5px 7px 30px #CECECE",
     bookShadow: "3px 4px 10px #a4a4a4",
+  },
+  boxBorder: {
+    bookBorder: "3px solid #E6E6E6",
   },
 };

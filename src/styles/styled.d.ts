@@ -13,6 +13,9 @@ declare module "styled-components" {
       headerShadow: string;
       bookShadow: string;
     };
+    boxBorder: {
+      bookBorder: string;
+    };
     fontSize: {
       large: string;
       medium: string;
