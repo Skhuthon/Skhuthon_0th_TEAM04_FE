@@ -8,6 +8,7 @@ import PasswrodIcon from "@/assets/svg/icon-auth-password.svg";
 import PasswordShowIcon from "@/assets/svg/icon-auth-passwordShow.svg";
 import Button from "@/components/common/Button";
 import styled from "styled-components";
+import { StyledDiv, StyledH1 } from "@/styles/common";
 
 const Login = () => {
   const location = useLocation();
@@ -43,7 +44,7 @@ const Login = () => {
 
   return (
     <>
-      <LoginDiv>
+      <StyledDiv>
         <StyledH1>로그인</StyledH1>
         <StyledInput
           value={name}
@@ -51,7 +52,6 @@ const Login = () => {
           onChangeValue={onChangeName}
           leftIcon={NameIcon}
         />
-        <br />
         <StyledInput
           type={password.type}
           value={password.value}
@@ -67,7 +67,6 @@ const Login = () => {
               })),
           }}
         />
-        <br />
         <StyledButton
           buttonColor="main"
           buttonStyle="gradient"
@@ -89,22 +88,12 @@ const Login = () => {
         <Toast isOpen={toastMessage.isOpen} onClose={toastClose}>
           {toastMessage.message}
         </Toast>
-      </LoginDiv>
+      </StyledDiv>
     </>
   );
 };
 
 export default Login;
-
-export const LoginDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  gap: 10px;
-`;
 
 const StyledInput = styled(Input)`
   padding: 10px;
@@ -113,11 +102,6 @@ const StyledInput = styled(Input)`
 
 const StyledButton = styled(Button)`
   margin: 20px;
-`;
-
-const StyledH1 = styled.div`
-  padding: 100px;
-  font-size: 60pt;
 `;
 
 const P = styled.p`

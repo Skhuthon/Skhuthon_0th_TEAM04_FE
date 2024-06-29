@@ -1,12 +1,9 @@
-import React from "react";
-import styled from "styled-components";
 import * as S from "./FriendBook.styled";
 export interface Props {
-  friendId: number;
   title: string;
   onClick: () => void;
 }
-const FriendBook = ({ friendId, title, onClick }: Props) => {
+const FriendBook = ({ title, onClick }: Props) => {
   return (
     <S.FriendDiv onClick={onClick}>
       <S.FriendLCoverDiv></S.FriendLCoverDiv>

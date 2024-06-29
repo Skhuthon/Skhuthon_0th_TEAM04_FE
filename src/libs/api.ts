@@ -29,8 +29,7 @@ const interceptorRequestFulfilled = (config: AxiosRequestConfig) => {
       ...config,
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${TOKEN}`,
-        // Cookie: `token=${TOKEN}`,
+        Authorization: `${TOKEN}`,
       } as AxiosRequestHeaders,
     };
   } else {

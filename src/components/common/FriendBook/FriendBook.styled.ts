@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 export const FriendDiv = styled.div`
-  width: 60%;
+  width: 100%;
   height: 200px;
   background-color: white;
   border: 1px solid #eaeaea;
   box-shadow: ${({ theme }) => theme.boxShadow.bookShadow};
   border-radius: 4px;
   display: flex;
-  justify-content: center;
+  position: relative;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const FriendLCoverDiv = styled.div`
   width: 30%;
-  height: 200px;
+  height: 100%;
   background-color: ${({ theme }) => theme.color.point};
   border-radius: 4px;
   display: flax;
@@ -27,9 +28,11 @@ export const FriendRCoverDiv = styled.div`
   height: 20px;
   background-color: ${({ theme }) => theme.color.point};
   border-radius: 4px;
-  display: flax;
+  display: flex;
   flex-direction: center;
   align-items: center;
+  position: absolute;
+  right: 0;
 `;
 
 export const FriendTextDiv = styled.div`

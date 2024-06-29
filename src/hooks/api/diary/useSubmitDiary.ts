@@ -2,28 +2,33 @@ import useCurrentUser from "@/hooks/useAuth";
 import { useToast } from "@/hooks/useToast";
 import { post } from "@/libs/api";
 import { queryClient } from "@/libs/queryClient";
-import { FriendRequest } from "@/types/request";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-const postFriendRequest = async (id: number, params: FriendRequest) => {
-  const res = await post(`/apis/v1/friends/request?id=${id}`, params);
-
+interface ISubmitDiary {
+  title: string;
+  content: string;
+  sing: "";
+  friendId: number;
+}
+const submitDiary = async (id: number, params: ISubmitDiary) => {
+  const res = await post(`/apis/v1/diary/create?id=${id}`, params);
+  console.log("res");
   return { res }; // 성공적인 경우 데이터 반환
 };
 
-export const useRequestFriend = () => {
+export const useSubmitDiary = () => {
   const { toastOpen, toastClose, toastMessage } = useToast();
   const navigate = useNavigate();
   const { currentUser } = useCurrentUser();
 
   const { mutate } = useMutation({
-    mutationFn: (params: FriendRequest) =>
-      postFriendRequest(currentUser.senderId, params),
+    mutationFn: (params: ISubmitDiary) =>
+      submitDiary(currentUser.senderId, params),
 
     onSuccess: ({ res }) => {
       console.log("res", res);
-      toastOpen("친구 요청 성공했습니다");
+      toastOpen("일기 작성에 성공했습니다");
       queryClient.clear();
       setTimeout(() => {
         navigate("/");

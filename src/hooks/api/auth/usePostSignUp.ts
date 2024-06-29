@@ -19,7 +19,7 @@ export const useSignUp = () => {
 
     onSuccess: ({ res }) => {
       console.log("res", res);
-      toastOpen("생성되었습니다");
+      toastOpen("가입되었습니다.");
 
       setTimeout(() => {
         navigate("/auth/login", {

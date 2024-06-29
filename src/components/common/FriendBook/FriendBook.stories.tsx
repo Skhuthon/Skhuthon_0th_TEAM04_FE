@@ -19,7 +19,6 @@ export const Default = () => {
   return (
     <div style={{ width: "300px", height: "500px" }}>
       <FriendBook
-        friendId={0}
         title="지영과 수경의 교환일기"
         onClick={() => alert("눌렸습니다")}
       ></FriendBook>

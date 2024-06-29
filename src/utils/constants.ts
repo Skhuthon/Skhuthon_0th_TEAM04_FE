@@ -1,6 +1,6 @@
 export const queryKeys = {
   friendList: "friendList",
-  friendAccept: "friendAccept",
+  diaryList: "friendiaryListdAccept",
 };
 
 export const storageConstants = {

@@ -1,5 +1,6 @@
 import { useToast } from "@/hooks/useToast";
 import { instance, post } from "@/libs/api";
+import { queryClient } from "@/libs/queryClient";
 import { UserState } from "@/store";
 
 import { LoginRequest, LoginResponse } from "@/types/user";
@@ -26,8 +27,8 @@ export const useLogin = () => {
     mutationFn: (params: LoginRequest) => postLogin(params),
 
     onSuccess: ({ res }) => {
-      console.log("res", res);
       toastOpen("환영합니다");
+      queryClient.clear();
       setTimeout(() => {
         setUser(res.data);
         // 토큰 저장

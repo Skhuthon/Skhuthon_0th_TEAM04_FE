@@ -30,6 +30,10 @@ export const InputArea = styled.input<{ inputWidth: string }>`
   border: none;
   outline: none;
   font-size: ${({ theme }) => theme.fontSize.large};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.color.background};
+  }
 `;
 
 export const InputLabel = styled.span<{

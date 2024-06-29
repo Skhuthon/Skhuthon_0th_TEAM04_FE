@@ -1,3 +1,5 @@
+import { DiaryContent } from "@/types/diary";
+import { FriendInfo } from "@/types/friend";
 import { User } from "@/types/user";
 import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
@@ -22,4 +24,16 @@ export const UserIdState = selector<number>({
     const user = get(UserState);
     return user?.senderId || 0;
   },
+});
+
+export const FriendInfoState = atom<FriendInfo>({
+  key: "FriendInfoState",
+  default: undefined,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const DiaryDetailState = atom<DiaryContent>({
+  key: "DiaryDetailState",
+  default: undefined,
+  effects_UNSTABLE: [persistAtom],
 });

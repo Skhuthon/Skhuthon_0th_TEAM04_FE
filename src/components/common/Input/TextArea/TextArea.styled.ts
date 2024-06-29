@@ -7,6 +7,10 @@ export const TextArea = styled.textarea<{ inputWidth: string }>`
   font-size: ${({ theme }) => theme.fontSize.large};
   resize: none;
   height: 100%;
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.color.background};
+  }
 `;
 
 export const InputLabel = styled.span<{

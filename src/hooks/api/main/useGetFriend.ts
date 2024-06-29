@@ -1,14 +1,14 @@
 import { get } from "@/libs/api";
-import { FriendList } from "@/types/friend";
+import { FriendInfo } from "@/types/friend";
 import { queryKeys } from "@/utils/constants";
 import { useQuery } from "@tanstack/react-query";
 
 const getFriendList = async (memberId: number) => {
-  const res = await get<{ data: FriendList }>(
+  const res = await get<{ data: FriendInfo[] }>(
     `/apis/v1/friends/list?memberId=${memberId}`
   );
 
-  return { res: res.data };
+  return { data: res.data };
 };
 
 export const useGetFriend = (memberId: number) => {

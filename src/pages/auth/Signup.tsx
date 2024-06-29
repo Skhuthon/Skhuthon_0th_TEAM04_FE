@@ -7,7 +7,7 @@ import PasswordShowIcon from "@/assets/svg/icon-auth-passwordShow.svg";
 import NameIcon from "@/assets/svg/icon-auth-name.svg";
 import Button from "@/components/common/Button";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { P, StyledDiv, StyledH1 } from "@/styles/common";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -52,16 +52,15 @@ const Signup = () => {
 
   return (
     <>
-      <SignupDiv>
+      <StyledDiv>
         <StyledH1>회원가입</StyledH1>
-        <StyledInput
+        <Input
           value={name}
           placeholder="name"
           onChangeValue={onChangeName}
           leftIcon={NameIcon}
         />
-        <br />
-        <StyledInput
+        <Input
           type={password.type}
           value={password.value}
           placeholder="password"
@@ -76,8 +75,7 @@ const Signup = () => {
               })),
           }}
         />
-        <br />
-        <StyledInput
+        <Input
           type={passwordCheck.type}
           value={passwordCheck.value}
           placeholder="passwordCheck"
@@ -93,8 +91,7 @@ const Signup = () => {
               })),
           }}
         />
-        <br />
-        <StyledButton
+        <Button
           buttonColor="main"
           buttonStyle="gradient"
           onClick={handleClickButton}
@@ -106,7 +103,7 @@ const Signup = () => {
           }
         >
           회원가입
-        </StyledButton>
+        </Button>
         <P
           onClick={() => {
             navigate("/auth/login");
@@ -114,7 +111,7 @@ const Signup = () => {
         >
           이미 계정이 있으신가요?
         </P>
-      </SignupDiv>
+      </StyledDiv>
       <Toast isOpen={toastMessage.isOpen} onClose={toastClose}>
         {toastMessage.message}
       </Toast>
@@ -123,29 +120,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-export const SignupDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  gap: 10px;
-`;
-
-const StyledInput = styled(Input)`
-  margin: 10px 0;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 20px 0;
-`;
-
-const StyledH1 = styled.div`
-  padding: 100px;
-  font-size: 60pt;
-`;
-const P = styled.p`
-  cursor: pointer;
-`;

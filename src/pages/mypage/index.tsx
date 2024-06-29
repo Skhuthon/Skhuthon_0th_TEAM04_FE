@@ -1,5 +1,5 @@
 import Button from "@/components/common/Button";
-import { useGetFriendAccept } from "@/hooks/api/mypage/useGetFriendAccept";
+// import { useGetFriendAccept } from "@/hooks/api/mypage/useGetFriendAccept";
 import useCurrentUser from "@/hooks/useAuth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +7,7 @@ import { styled } from "styled-components";
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const { currentUser, resetUser } = useCurrentUser();
-
-  const { data } = useGetFriendAccept(currentUser.senderId);
+  const { resetUser } = useCurrentUser();
 
   const onClickLogout = () => {
     navigate("/auth/login");
@@ -17,10 +15,8 @@ const MyPage = () => {
     resetUser();
   };
 
-  console.log("data", data);
   return (
     <MyPageWrapper>
-      <UnderLineP>친구 요청 N</UnderLineP>
       <UnderLineP
         onClick={() => {
           navigate("/request");
