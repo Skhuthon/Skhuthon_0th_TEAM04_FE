@@ -18,7 +18,8 @@ export const Header = styled.div`
 export const RenderDayView = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  height: 80%;
+  justify-items: center;
+  align-items: center;
 `;
 
 export const DayWrapper = styled(RenderDayView)`
