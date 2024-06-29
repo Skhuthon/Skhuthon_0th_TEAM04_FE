@@ -43,4 +43,10 @@ export const ButtonWrapper = styled.button<{
     buttonStyle === "default"
       ? theme.color[buttonColor]
       : `linear-gradient(90deg, ${getSubColor(theme.color[buttonColor])} 0%, ${getMainColor(theme.color[buttonColor])} 100%);`};
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    background: gray;
+  }
 `;

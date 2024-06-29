@@ -92,7 +92,7 @@ export const Password = ({ ...args }) => {
       />
       <Input
         {...args}
-        type={password.value}
+        type={password.type}
         value={passwordCheck.value}
         placeholder="passwordCheck"
         onChangeValue={onChangePasswordCheck}
