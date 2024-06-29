@@ -1,14 +1,14 @@
-import type { Meta } from '@storybook/react';
-import Modal from '.';
-import useModal from './useModal';
+import type { Meta } from "@storybook/react";
+import Modal from ".";
+import useModal from "@/hooks/useModal";
 
 const meta = {
-  title: '모달',
+  title: "모달",
   component: Modal,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     isOpen: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 } satisfies Meta<typeof Modal>;
@@ -19,7 +19,7 @@ export const Default = ({ ...args }) => {
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
-    <div style={{ width: '300px', height: '500px' }}>
+    <div style={{ width: "300px", height: "500px" }}>
       <button onClick={() => openModal()}>Open Modal</button>
       <Modal isOpen={isOpen} onClose={closeModal} {...args}>
         <div>
@@ -47,7 +47,7 @@ export const Nested = () => {
   } = useModal();
 
   return (
-    <div style={{ width: '300px', height: '500px' }}>
+    <div style={{ width: "300px", height: "500px" }}>
       <button onClick={() => openModal()}>Open Modal</button>
 
       <Modal isOpen={isOpen} onClose={closeModal}>
