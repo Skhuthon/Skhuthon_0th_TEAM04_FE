@@ -7,6 +7,7 @@ import useTheme from "../src/hooks/useTheme";
 
 import ModalContainer from "../src/components/common/Modal/ModalContainer";
 import ToastContainer from "../src/components/common/Toast/ToastContainer";
+import { GlobalStyle } from "../src/styles/globalStyle";
 
 interface Props {
   children: ReactNode;
@@ -38,6 +39,7 @@ const preview: Preview = {
             <ThemeProvider
               theme={themeProps.theme === "light" ? lightTheme : darkTheme}
             >
+              <GlobalStyle />
               <Story />
               <ModalContainer />
               <ToastContainer />

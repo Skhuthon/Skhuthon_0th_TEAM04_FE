@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     box-sizing:border-box;
-  
+    font-family: "default";
   }
 
   body{
@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.color.background};
     color:${({ theme }) => theme.color.text};
     font-size:${({ theme }) => theme.fontSize.medium};
-    font-family: "default";
   }
 
 `;
