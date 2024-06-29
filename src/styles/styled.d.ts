@@ -9,7 +9,13 @@ declare module "styled-components" {
       sub: string;
       point: string;
     };
-
+    boxShadow: {
+      headerShadow: string;
+      bookShadow: string;
+    };
+    boxBorder: {
+      bookBorder: string;
+    };
     fontSize: {
       large: string;
       medium: string;
