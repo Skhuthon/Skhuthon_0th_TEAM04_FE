@@ -1,9 +1,9 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { useCallback, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import styled from 'styled-components';
+import type { ComponentPropsWithoutRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import styled from "styled-components";
 
-export interface ToastProps extends ComponentPropsWithoutRef<'div'> {
+export interface ToastProps extends ComponentPropsWithoutRef<"div"> {
   /** Toast가 열렸는지 판단하는 변수 */
   isOpen: boolean;
   /** Toast를 닫을 때 실행할 함수 */
@@ -40,10 +40,10 @@ const Toast = ({
   return (
     isOpen &&
     createPortal(
-      <ToastBackdrop role='alert' aria-live='assertive' {...attributes}>
+      <ToastBackdrop role="alert" aria-live="assertive" {...attributes}>
         <ToastWrapper>{children}</ToastWrapper>
       </ToastBackdrop>,
-      document.getElementById('toast-container') as Element
+      document.getElementById("toast-container") as Element
     )
   );
 };
@@ -67,7 +67,7 @@ const ToastBackdrop = styled.div`
 const ToastWrapper = styled.div`
   width: 80%;
   height: 50px;
-  background-color: #d9d9d9;
+  background-color: ${({ theme }) => theme.color.sub};
   color: black;
   border-radius: 4px;
   display: flex;

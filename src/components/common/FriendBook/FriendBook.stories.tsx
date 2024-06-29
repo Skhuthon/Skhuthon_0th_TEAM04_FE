@@ -15,7 +15,7 @@ const meta = {
 
 export default meta;
 
-export const Default = ({ ...args }) => {
+export const Default = () => {
   return (
     <div style={{ width: "300px", height: "500px" }}>
       <FriendBook

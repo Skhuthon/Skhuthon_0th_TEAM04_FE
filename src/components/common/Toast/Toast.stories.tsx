@@ -2,6 +2,7 @@ import type { Meta } from "@storybook/react";
 
 import Toast from ".";
 import { useToast } from "../../../hooks/useToast";
+import Button from "../Button";
 
 const meta = {
   title: "토스트",
@@ -24,7 +25,13 @@ export const Default = ({ ...args }) => {
 
   return (
     <>
-      <button onClick={() => open(args.children)}>Show Toast</button>
+      <Button
+        onClick={() => open(args.children)}
+        buttonStyle={"default"}
+        buttonColor={"main"}
+      >
+        Show Toast
+      </Button>
       {toastMessage.isOpen && (
         <Toast isOpen={toastMessage.isOpen} {...args} onClose={close}>
           {toastMessage.message}

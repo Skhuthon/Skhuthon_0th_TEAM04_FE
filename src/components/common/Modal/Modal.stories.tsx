@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 import Modal from ".";
 import useModal from "@/hooks/useModal";
+import Button from "../Button";
 
 const meta = {
   title: "모달",
@@ -20,7 +21,13 @@ export const Default = ({ ...args }) => {
 
   return (
     <div style={{ width: "300px", height: "500px" }}>
-      <button onClick={() => openModal()}>Open Modal</button>
+      <Button
+        buttonStyle="default"
+        buttonColor="main"
+        onClick={() => openModal()}
+      >
+        Open Modal
+      </Button>
       <Modal isOpen={isOpen} onClose={closeModal} {...args}>
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eum
